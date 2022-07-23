@@ -7,12 +7,15 @@ import { createPinia } from 'pinia'
 import GaoUI from './components/index'
 import GaoLibs from './libs/index'
 import 'virtual:svg-icons-register'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 useREM()
 const app = createApp(App)
 app.use(router)
 app.use(GaoUI)
 app.use(GaoLibs)
-app.use(createPinia())
+app.use(pinia)
 
 app.mount('#app')

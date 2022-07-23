@@ -2,7 +2,7 @@
  * @Author       : 高江华 g598670138@163.com
  * @Date         : 2022-07-21 19:31:29
  * @LastEditors  : 高江华 g598670138@163.com
- * @LastEditTime : 2022-07-21 19:35:50
+ * @LastEditTime : 2022-07-23 21:11:09
  * @FilePath     : \web-C-tmp\src\views\home\components\menu\index.vue
  * @Description  : 
  * 
@@ -25,13 +25,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-const props = defineProps({
-    categorys: {
-        type: Array<any>,
-        required: true
-    }
-})
+import useStore from '@/store';
+const { categorys } = useStore().common
 defineEmits(['onItemClick'])
 </script>
 

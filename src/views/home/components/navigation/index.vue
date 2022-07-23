@@ -1,44 +1,25 @@
+<!--
+ * @Author       : 高江华 g598670138@163.com
+ * @Date         : 2022-07-19 11:05:52
+ * @LastEditors  : 高江华 g598670138@163.com
+ * @LastEditTime : 2022-07-23 21:29:06
+ * @FilePath     : \web-C-tmp\src\views\home\components\navigation\index.vue
+ * @Description  : 
+ * 
+ * Copyright (c) 2022 by 高江华 g598670138@163.com, All Rights Reserved. 
+-->
 <template>
-    <mobile-navigation-vue v-if="isMobileTerminal" :data="category" />
+    <mobile-navigation-vue v-if="isMobileTerminal" />
+    <pc-navigation-vue v-else></pc-navigation-vue>
 </template>
 
 <script setup lang="ts">
 import { isMobileTerminal } from '@/utils/flexible'
 import mobileNavigationVue from './mobile/index.vue'
-import { ref } from 'vue'
-import { categoryApi } from '@/api/index'
-import { ALL_CATEGORY_ITEM } from '@/constants'
-
-const category = ref([
-    {
-        name: 'ajhjshjh'
-    },
-    {
-        name: 'ajhjshjh'
-    },{
-        name: 'ajhjshjh'
-    },
-    {
-        name: 'ajhjshjh'
-    },
-    {
-        name: 'ajhjshjh'
-    },
-    {
-        name: 'ajhjshjh'
-    },
-    {
-        name: 'ajhjshjh'
-    }
-])
-category.value.unshift(ALL_CATEGORY_ITEM)
-// const getCategoryData = async () => {
-//     const { data, code } = await categoryApi.getData()
-//     if (code === 200) {
-//         category.value = data
-//     }
-// }
-// getCategoryData()
+import pcNavigationVue from './pc/index.vue'
+import useStore from '@/store'
+// 获取数据
+// useStore().common.getCategorys()
 </script>
 
 <style lang="scss" scoped></style>

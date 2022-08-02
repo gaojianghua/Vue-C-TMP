@@ -9,7 +9,7 @@
  * Copyright (c) 2022 by 高江华 g598670138@163.com, All Rights Reserved.
  */
 import { defineStore } from 'pinia'
-import { ALL_CATEGORY_ITEM, CATEGORY_INIT_DATA } from '@/constants'
+import { ALL_CATEGORY_ITEM, CATEGORY_INIT_DATA, THEME_LIGHT } from '@/constants'
 import { categoryApi } from '@/api/index'
 
 interface SCategorys {
@@ -20,7 +20,9 @@ interface SCategorys {
 const useCommonStore = defineStore('common', {
     state: () => {
         return {
-            categorys: <SCategorys[]>CATEGORY_INIT_DATA
+            categorys: <SCategorys[]>CATEGORY_INIT_DATA,
+            theme: <String>THEME_LIGHT,
+            currentCategory: ALL_CATEGORY_ITEM,
         }
     },
     actions: {
@@ -29,19 +31,30 @@ const useCommonStore = defineStore('common', {
             if (code === 200) {
                 this.categorys = [ALL_CATEGORY_ITEM, ...data]
             }
-        }
+        },
+        setTheme(data: string) {
+            this.theme = data
+        },
+        changeCurrentCategory(newCategory: any) {
+            this.currentCategory = newCategory
+        },
+        currentCategoryIndex() {
+            return this.categorys.findIndex(item => {
+                return item.id === this.currentCategory.id
+            })
+        },
     },
     persist: {
         key: 'common',
         storage: window.localStorage,
-        paths: ['categorys'],
+        paths: ['categorys', 'theme'],
         beforeRestore: (context) => {
             console.log('Before hydration...:' + context)
         },
         afterRestore: (context) => {
             console.log('After hydration...:' + context)
-        }
-    }
+        },
+    },
 })
 
 export default useCommonStore

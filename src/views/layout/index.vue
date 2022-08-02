@@ -10,8 +10,10 @@
 -->
 <template>
     <div class="h-screen">
-        <header-vue class=" h-herader"></header-vue>
-        <main-vue class=" h-main"></main-vue>
+        <header-vue class="h-herader"></header-vue>
+        <div class="h-main">
+            <main-vue></main-vue>
+        </div>
         <floating-vue></floating-vue>
     </div>
 </template>

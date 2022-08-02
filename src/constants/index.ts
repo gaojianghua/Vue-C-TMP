@@ -62,7 +62,7 @@ export const CATEGORY_INIT_DATA = [
     }
 ]
 // 极简白
-export const THEME_LIGHT = 'THEME_DARK'
+export const THEME_LIGHT = 'THEME_LIGHT'
 // 极夜黑
 export const THEME_DARK = 'THEME_DARK'
 // 跟随系统

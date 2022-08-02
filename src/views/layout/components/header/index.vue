@@ -9,9 +9,12 @@
  * Copyright (c) 2022 by 高江华 g598670138@163.com, All Rights Reserved. 
 -->
 <template>
-    <div class="w-full bg-white border-b border-b-zinc-200 px-2 py-1">
+    <div
+        class="w-full bg-white dark:bg-zinc-800 border-b border-b-zinc-200 dark:border-b-zinc-700 px-2 py-1 duration-500"
+    >
         <div class="flex items-center">
             <img
+                v-lazy
                 class="h-4 cursor-pointer mr-2"
                 @click="onToHome"
                 src="https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png"

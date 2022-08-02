@@ -4,9 +4,9 @@
         <template #reference>
             <div>
                 <g-svgIcon
-                    name="theme-light"
-                    class="w-4 h-4 p-1 cursor-pointer rounded-sm duration-200 outline-none hover:bg-zinc-100/60"
-                    fillClass="fill-zinc-900"
+                    :name="svgIconName"
+                    class="w-4 h-4 p-1 cursor-pointer rounded-sm duration-200 outline-none hover:bg-zinc-100/60 dark:hover:bg-zinc-900/60"
+                    fillClass="fill-zinc-900 dark:fill-zinc-300"
                 ></g-svgIcon>
             </div>
         </template>
@@ -15,14 +15,17 @@
             <div
                 v-for="item in themeArr"
                 :key="item.id"
-                class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60"
+                class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60 dark:hover:bg-zinc-900/60"
+                @click="onItemClick(item)"
             >
                 <g-svgIcon
                     :name="item.icon"
                     class="w-1.5 h-1.5 mr-1"
-                    fillClass="fill-zinc-900"
+                    fillClass="fill-zinc-900 dark:fill-zinc-300"
                 ></g-svgIcon>
-                <span class="text-zinc-900 text-sm">{{ item.name }}</span>
+                <span class="text-zinc-900 text-sm dark:text-zinc-300">{{
+                    item.name
+                }}</span>
             </div>
         </div>
     </g-popover>
@@ -30,28 +33,40 @@
 
 <script setup lang="ts">
 import { THEME_DARK, THEME_SYSTEM, THEME_LIGHT } from '@/constants'
-import { ref } from 'vue'
+import useStore from '@/store'
+import { computed } from 'vue'
 
 const themeArr = [
     {
         id: 1,
         type: THEME_LIGHT,
         icon: 'theme-light',
-        name: '极简白'
+        name: '极简白',
     },
     {
         id: 2,
         type: THEME_DARK,
         icon: 'theme-dark',
-        name: '极夜黑'
+        name: '极夜黑',
     },
     {
         id: 3,
         type: THEME_SYSTEM,
         icon: 'theme-system',
-        name: '跟随系统'
-    }
+        name: '跟随系统',
+    },
 ]
+// 切换主题
+const onItemClick = (item: any) => {
+    useStore().common.setTheme(item.type)
+}
+// 展示图标
+const svgIconName = computed(() => {
+    const findTheme = themeArr.find((item) => {
+        return item.type === useStore().common.theme
+    })
+    return findTheme?.icon
+})
 </script>
 
 <style lang="scss" scoped></style>

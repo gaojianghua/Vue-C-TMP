@@ -10,36 +10,36 @@
 -->
 <template>
     <div>
-        <g-infinite
-            v-model="loading"
-            :isFinished="isFinished"
-            @onLoad="getPexelsData"
-        >
-            <g-waterfall
-                class="px-1 w-full"
-                :data="list"
-                nodeKey="id"
-                :column="isMobileTerminal ? 2 : 5"
-                :picturePreReading="false"
-            >
+        <g-infinite v-model="loading" :isFinished="isFinished" @onLoad="getPexelsData">
+            <g-waterfall class="px-1 w-full" :data="list" nodeKey="id" :column="isMobileTerminal ? 2 : 5"
+                :picturePreReading="false">
                 <template v-slot="{ item, width }">
-                    <item-vue :data="item" :width="width"></item-vue>
+                    <item-vue :data="item" :width="width" @click="onToPins"></item-vue>
                 </template>
             </g-waterfall>
         </g-infinite>
+        <!-- 详情内容展示 -->
+        <transition :css="false" @beforeEnter="beforeEnter" @enter="enter" @leave="leave">
+            <pins-vue v-if="isVisiablePins" :id="currentPins.id"></pins-vue>
+        </transition>
     </div>
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, watch } from 'vue'
+import { ref } from 'vue'
 import { pexelsApi } from '@/api'
 import itemVue from './item.vue'
 import { IList } from '@/types'
 import { isMobileTerminal } from '@/utils/flexible'
 import { listData } from '@/ject/list'
 import useStore from '@/store'
+import pinsVue from '@/views/pins/components/pins.vue'
+import gsap from 'gsap'
+import { useEventListener } from '@vueuse/core'
+
 const {
-    currentCategory
+    currentCategory,
+    searchText
 } = useStore().common
 
 const loading = ref(false)
@@ -106,6 +106,70 @@ const getPexelsData = () => {
 //         })
 //     }
 // )
+// 监听 searchText 变化
+// watch(
+//     () => searchText,
+//     (val) => {
+//         resetQuery({
+//             page: 1,
+//             searchText: val
+//         })
+//     }
+// )
+
+
+// 控制pins展示
+const isVisiablePins = ref<boolean>(false)
+// 保存当前选中项 
+const currentPins = ref<any>({})
+
+// 监听浏览器后退事件
+useEventListener(window, 'popstate', () => {
+    isVisiablePins.value = false
+})
+
+// 进入Pins详情
+const onToPins = (item: any) => {
+    // 接收三个参数state, title, url
+    history.pushState(null, '', `/pins/${item.id}`)
+    isVisiablePins.value = true
+    currentPins.value = item
+}
+const beforeEnter = (el: any) => {
+    gsap.set(el, {
+        scaleX: 0,
+        scaleY: 0,
+        transformOrigin: '0 0',
+        translateX: currentPins.value.location?.translateX,
+        translateY: currentPins.value.location?.translateY,
+        opacity: 0
+    })
+}
+const enter = (el: any, done: any) => {
+    gsap.to(el, {
+        direction: 0.3,
+        scaleX: 1,
+        scaleY: 1,
+        translateX: 0,
+        translateY: 0,
+        opacity: 1,
+        onComplete: done
+    })
+}
+
+const leave = (el: any, done: any) => {
+    gsap.to(el, {
+        direction: 0.3,
+        scaleX: 0,
+        scaleY: 0,
+        translateX: currentPins.value.location?.translateX,
+        translateY: currentPins.value.location?.translateY,
+        opacity: 0,
+        onComplete: done
+    })
+}
+
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

@@ -14,12 +14,12 @@
         <slot></slot>
         <div ref="loadingTarget" class="h-6 py-4 flex items-center">
             <!-- 加载更多 -->
-            <g-svgIcon
+            <g-svg-icon
                 v-if="loading"
                 class="w-4 h-4 mx-auto animate-spin"
                 name="infinite-load"
                 fillClass="fill-zinc-800"
-            ></g-svgIcon>
+            ></g-svg-icon>
             <!-- 没有更多数据 -->
             <p v-if="isFinished" class="text-center text-base text-zinc-400">
                 已经没有更多数据了
@@ -50,7 +50,7 @@ const emits = defineEmits(['onLoad', 'update:modelValue'])
 // 处理loading状态
 const loading = useVModel(props)
 // 滚动的元素
-const loadingTarget = ref(null)
+const loadingTarget = ref<HTMLElement>()
 // 记录当前是否在底部
 const targetIsIntersecting = ref(false)
 useIntersectionObserver(loadingTarget, ([{ isIntersecting }]) => {

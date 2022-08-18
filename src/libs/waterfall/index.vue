@@ -99,7 +99,7 @@ const useColumnHeightObj = () => {
     }
 }
 // 容器实例
-const containerTarget = ref()
+const containerTarget = ref<HTMLElement>()
 // 容器总宽度
 const containerWidth = ref(0)
 // 容器的左边距
@@ -107,14 +107,14 @@ const containerLeft = ref(0)
 // 计算容器总宽度
 const useContainerWidth = () => {
     let { paddingLeft, paddingRight } = getComputedStyle(
-        containerTarget.value,
+        containerTarget.value!,
         null
     )
     paddingLeft = paddingLeft.replace('px', '')
     paddingRight = paddingRight.replace('px', '')
     containerLeft.value = parseInt(paddingLeft)
     containerWidth.value =
-        containerTarget.value.offsetWidth -
+        containerTarget.value!.offsetWidth -
         parseInt(paddingLeft) -
         parseInt(paddingRight)
 }
@@ -135,17 +135,17 @@ onMounted(() => {
     useColumnWidth()
 })
 // item 高度集合
-let itemHeights: any = []
+let itemHeights: number[] = []
 // 监听图片加载完成
 const waitImgComplate = () => {
     itemHeights = []
     let itemElements = Array.from(
         document.getElementsByClassName('g-waterfall-item')
-    )
+    ) as HTMLElement[]
     const imgElements = getImgElements(itemElements)
     const allImgs = getAllImg(imgElements)
     onComplateImgs(allImgs).then(() => {
-        itemElements.forEach((el: any) => {
+        itemElements.forEach((el: HTMLElement) => {
             itemHeights.push(el.offsetHeight)
         })
         useItemLoction()
@@ -156,8 +156,8 @@ const useItemHeight = () => {
     itemHeights = []
     let itemElements = Array.from(
         document.getElementsByClassName('g-waterfall-item')
-    )
-    itemElements.forEach((el: any) => {
+    ) as HTMLElement[]
+    itemElements.forEach((el: HTMLElement) => {
         itemHeights.push(el.offsetHeight)
     })
     useItemLoction()
@@ -191,7 +191,7 @@ onUnmounted(() => {
 
 // 返回下一个 item 的left
 const getItemLeft = () => {
-    const column: any = getMinHeightColumn(columnHeightObj.value)
+    const column: number = Number(getMinHeightColumn(columnHeightObj.value))
     return (
         column * (columnWidth.value + props.columnSpacing) + containerLeft.value
     )
@@ -203,7 +203,7 @@ const getItemTop = () => {
 
 // 指定列高度自增
 const increasingHeight = (index: number) => {
-    const minHeightColumn: any = getMinHeightColumn(columnHeightObj.value)
+    const minHeightColumn: string = getMinHeightColumn(columnHeightObj.value)!
     columnHeightObj.value[minHeightColumn] +=
         itemHeights[index] + props.rowSpacing
 }

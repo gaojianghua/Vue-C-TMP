@@ -12,7 +12,7 @@ import { defineStore } from 'pinia'
 import { ALL_CATEGORY_ITEM, CATEGORY_INIT_DATA, THEME_LIGHT } from '@/constants'
 import { categoryApi } from '@/api/index'
 
-interface SCategorys {
+export interface SCategorys {
     id: string
     name: string
 }
@@ -23,6 +23,8 @@ const useCommonStore = defineStore('common', {
             categorys: <SCategorys[]>CATEGORY_INIT_DATA,
             theme: <String>THEME_LIGHT,
             currentCategory: ALL_CATEGORY_ITEM,
+            searchText: '',
+            routerType: 'none'
         }
     },
     actions: {
@@ -35,7 +37,7 @@ const useCommonStore = defineStore('common', {
         setTheme(data: string) {
             this.theme = data
         },
-        changeCurrentCategory(newCategory: any) {
+        changeCurrentCategory(newCategory: SCategorys) {
             this.currentCategory = newCategory
         },
         currentCategoryIndex() {
@@ -43,11 +45,21 @@ const useCommonStore = defineStore('common', {
                 return item.id === this.currentCategory.id
             })
         },
+        // 修改searchText
+        changeSearchText(newSearchText: string) {
+            this.searchText = newSearchText
+        },
+        /**
+         * 修改 routerType
+         */
+        changeRouterType(newType: string) {
+            this.routerType = newType
+        }
     },
     persist: {
         key: 'common',
         storage: window.localStorage,
-        paths: ['categorys', 'theme'],
+        paths: ['categorys', 'theme', 'currentCategory', 'searchText'],
         beforeRestore: (context) => {
             console.log('Before hydration...:' + context)
         },

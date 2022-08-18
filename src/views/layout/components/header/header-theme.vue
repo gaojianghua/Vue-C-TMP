@@ -3,28 +3,20 @@
         <!-- 具名插槽 -->
         <template #reference>
             <div>
-                <g-svgIcon
-                    :name="svgIconName"
-                    class="w-4 h-4 p-1 cursor-pointer rounded-sm duration-200 outline-none hover:bg-zinc-100/60 dark:hover:bg-zinc-900/60"
-                    fillClass="fill-zinc-900 dark:fill-zinc-300"
-                ></g-svgIcon>
+                <g-svg-icon :name="svgIconName"
+                    class="guide-theme w-4 h-4 p-1 cursor-pointer rounded-sm duration-200 outline-none hover:bg-zinc-100/60 dark:hover:bg-zinc-900/60"
+                    fillClass="fill-zinc-900 dark:fill-zinc-300"></g-svg-icon>
             </div>
         </template>
         <!-- 匿名插槽 -->
-        <div class="w-[140px] overflow-hidden">
-            <div
-                v-for="item in themeArr"
-                :key="item.id"
+        <div class="w-[140px] p-1 overflow-hidden">
+            <div v-for="item in themeArr" :key="item.id"
                 class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60 dark:hover:bg-zinc-900/60"
-                @click="onItemClick(item)"
-            >
-                <g-svgIcon
-                    :name="item.icon"
-                    class="w-1.5 h-1.5 mr-1"
-                    fillClass="fill-zinc-900 dark:fill-zinc-300"
-                ></g-svgIcon>
+                @click="onItemClick(item)">
+                <g-svg-icon :name="item.icon" class="w-1.5 h-1.5 mr-1" fillClass="fill-zinc-900 dark:fill-zinc-300">
+                </g-svg-icon>
                 <span class="text-zinc-900 text-sm dark:text-zinc-300">{{
-                    item.name
+                        item.name
                 }}</span>
             </div>
         </div>
@@ -36,7 +28,14 @@ import { THEME_DARK, THEME_SYSTEM, THEME_LIGHT } from '@/constants'
 import useStore from '@/store'
 import { computed } from 'vue'
 
-const themeArr = [
+interface IThemeItem {
+    id: number,
+    type: string,
+    icon: string,
+    name: string
+}
+
+const themeArr: IThemeItem[] = [
     {
         id: 1,
         type: THEME_LIGHT,
@@ -57,7 +56,7 @@ const themeArr = [
     },
 ]
 // 切换主题
-const onItemClick = (item: any) => {
+const onItemClick = (item: IThemeItem) => {
     useStore().common.setTheme(item.type)
 }
 // 展示图标
@@ -69,4 +68,5 @@ const svgIconName = computed(() => {
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

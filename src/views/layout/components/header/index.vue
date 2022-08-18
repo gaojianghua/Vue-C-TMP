@@ -15,7 +15,7 @@
         <div class="flex items-center">
             <img
                 v-lazy
-                class="h-4 cursor-pointer mr-2"
+                class="guide-home h-4 cursor-pointer mr-2"
                 @click="onToHome"
                 src="https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png"
                 alt=""
@@ -29,9 +29,8 @@
 
 <script setup lang="ts">
 import headerMyVue from './header-my.vue'
-import headerSearchVue from './header-search.vue'
+import headerSearchVue from './header-search/index.vue'
 import headerThemeVue from './header-theme.vue'
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()

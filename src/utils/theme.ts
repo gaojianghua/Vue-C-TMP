@@ -14,7 +14,7 @@ const watchSystemThemeChange = () => {
     }
 }
 // 变更主题
-const changeTheme = (val: any) => {
+const changeTheme = (val: string | any) => {
     let themeClassName = ''
     switch (val) {
         case THEME_LIGHT:

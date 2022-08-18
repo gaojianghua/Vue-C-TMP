@@ -11,7 +11,7 @@
 import { useIntersectionObserver } from '@vueuse/core'
 
 export default {
-    mounted(el: any) {
+    mounted(el: HTMLImageElement) {
         // 拿到当前 img 的 src
         const imgSrc = el.src
         // 把 src 置空

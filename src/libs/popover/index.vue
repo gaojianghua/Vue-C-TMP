@@ -6,12 +6,9 @@
         </div>
         <!-- 气泡展示 -->
         <transition name="slide">
-            <div
-                ref="contentTarget"
-                v-if="isViable"
-                class="absolute p-1 z-20 bg-white dark:bg-zinc-900 border dark:border-zinc-700 rounded-md"
-                :style="contentStyle"
-            >
+            <div ref="contentTarget" v-if="isViable"
+                class="absolute z-20 bg-white dark:bg-zinc-900 border dark:border-zinc-700 rounded-md"
+                :style="contentStyle">
                 <!-- 匿名插槽: 弹出层视图中的内容 -->
                 <slot />
             </div>
@@ -80,9 +77,9 @@ const onMouseleave = () => {
 }
 
 // 计算元素的尺寸
-const referenceTarget = ref(null)
-const contentTarget = ref(null)
-const useElementSize = (target: any) => {
+const referenceTarget = ref<HTMLElement>()
+const contentTarget = ref<HTMLElement>()
+const useElementSize = (target: HTMLElement) => {
     if (!target) return {}
     return {
         width: target.offsetWidth,
@@ -106,24 +103,24 @@ watch(isViable, (val: boolean) => {
             case PROP_TOP_LEFT:
                 contentStyle.value.top = 0
                 contentStyle.value.left =
-                    -useElementSize(contentTarget.value).width + 'px'
+                    -useElementSize(contentTarget.value!).width! + 'px'
                 break
             case PROP_TOP_RIGHT:
                 contentStyle.value.top = 0
                 contentStyle.value.left =
-                    useElementSize(referenceTarget.value).width + 'px'
+                    useElementSize(referenceTarget.value!).width! + 'px'
                 break
             case PROP_BOTTOM_LEFT:
                 contentStyle.value.top =
-                    useElementSize(referenceTarget.value).height + 'px'
+                    useElementSize(referenceTarget.value!).height! + 'px'
                 contentStyle.value.left =
-                    -useElementSize(contentTarget.value).width + 'px'
+                    -useElementSize(contentTarget.value!).width! + 'px'
                 break
             case PROP_BOTTOM_RIGHT:
                 contentStyle.value.top =
-                    useElementSize(referenceTarget.value).height + 'px'
+                    useElementSize(referenceTarget.value!).height + 'px'
                 contentStyle.value.left =
-                    useElementSize(referenceTarget.value).width + 'px'
+                    useElementSize(referenceTarget.value!).width + 'px'
                 break
             default:
                 break
@@ -137,6 +134,7 @@ watch(isViable, (val: boolean) => {
 .slide-leave-active {
     transition: opacity 0.3s, transform 0.3s;
 }
+
 .slide-enter-from,
 .slide-leave-to {
     opacity: 0;

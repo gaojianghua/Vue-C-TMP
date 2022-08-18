@@ -33,11 +33,11 @@
                 class="absolute right-0 bottom-1 z-20 p-1 rounded cursor-pointer duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-900"
                 @click="triggerState"
             >
-                <g-svgIcon
+                <g-svg-icon
                     :name="isOpenCategory ? 'fold' : 'unfold'"
                     class="w-1 h-1"
                     fillClass="fill-zinc-900 dark:fill-zinc-300"
-                ></g-svgIcon>
+                ></g-svg-icon>
             </div>
         </ul>
     </div>
@@ -46,6 +46,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import useStore from '@/store'
+import { SCategorys } from '@/store/common';
 const { categorys, changeCurrentCategory, currentCategoryIndex } =
     useStore().common
 
@@ -56,7 +57,7 @@ const triggerState = () => {
 }
 // 选中状态处理
 //const currentCategoryIndex = ref<number>(0)
-const onItemClick = (item: any) => {
+const onItemClick = (item: SCategorys) => {
     changeCurrentCategory(item)
 }
 </script>

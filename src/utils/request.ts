@@ -1,6 +1,7 @@
 //http.ts
 import axios, { AxiosRequestConfig } from 'axios'
 import NProgress from 'nprogress'
+import useStore from '@/store'
 
 // 设置请求头和请求路径
 const server = axios.create({
@@ -14,10 +15,10 @@ const server = axios.create({
 // 请求拦截
 server.interceptors.request.use(
     (config): AxiosRequestConfig<any> => {
-        const token = window.sessionStorage.getItem('token')
+        const { token } = useStore().user
         if (token) {
             //@ts-ignore
-            config.headers.token = token
+            config.headers.Authorization = `Bearer ${token}`
         }
         return config
     },
@@ -27,11 +28,17 @@ server.interceptors.request.use(
 )
 // 响应拦截
 server.interceptors.response.use((res) => {
-    if (res.data.code === 111) {
-        sessionStorage.setItem('token', '')
-        // token过期操作
+    const { code, msg, data } = res.data
+    if (code === 200) {
+        return data
     }
-    return res
+    return Promise.reject(new Error(msg))
+}, (error) => {
+    // token过期处理
+    if (error.response?.data?.code === 401) {
+        useStore().user.logout()
+    }
+    return Promise.reject(error)
 })
 // 请求封装
 interface ResType<T> {
@@ -43,6 +50,8 @@ interface ResType<T> {
 interface Http {
     get<T>(url: string, params?: unknown): Promise<ResType<T>>
     post<T>(url: string, params?: unknown): Promise<ResType<T>>
+    put<T>(url: string, params?: unknown): Promise<ResType<T>>
+    remove<T>(url: string, params?: unknown): Promise<ResType<T>>
     upload<T>(url: string, params: unknown): Promise<ResType<T>>
     download(url: string): void
 }
@@ -51,7 +60,7 @@ const http: Http = {
         return new Promise((resolve, reject) => {
             NProgress.start()
             server
-                .get(url, { params })
+                .get(url, { params })   
                 .then((res) => {
                     NProgress.done()
                     resolve(res.data)
@@ -67,6 +76,36 @@ const http: Http = {
             NProgress.start()
             server
                 .post(url, JSON.stringify(params))
+                .then((res) => {
+                    NProgress.done()
+                    resolve(res.data)
+                })
+                .catch((err) => {
+                    NProgress.done()
+                    reject(err.data)
+                })
+        })
+    },
+    put(url, params) {
+        return new Promise((resolve, reject) => {
+            NProgress.start()
+            server
+                .put(url, JSON.stringify(params))
+                .then((res) => {
+                    NProgress.done()
+                    resolve(res.data)
+                })
+                .catch((err) => {
+                    NProgress.done()
+                    reject(err.data)
+                })
+        })
+    },
+    remove(url, params) {
+        return new Promise((resolve, reject) => {
+            NProgress.start()
+            server
+                .delete(url, { params })
                 .then((res) => {
                     NProgress.done()
                     resolve(res.data)

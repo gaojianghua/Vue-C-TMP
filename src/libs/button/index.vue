@@ -1,22 +1,16 @@
 <template>
-    <button class="text-sm text-center rounded duration-150 flex justify-center items-center"
-    :class="[
+    <button class="text-sm text-center rounded duration-150 flex justify-center items-center" :class="[
         typeEnum[type],
         sizeEnum[sizeKey].button,
         {
             'active:scale-105': isActiveAnim
         }
-    ]"
-    @click.stop="onBtnClick"
-    >
+    ]" @click.stop="onBtnClick">
         <!-- loading -->
-        <g-svgIcon v-if="loading" name="loading" class="w-2 h-2 animate-spin mr-1"></g-svgIcon>
+        <g-svg-icon v-if="loading" name="loading" class="w-2 h-2 animate-spin mr-1"></g-svg-icon>
         <!-- icon按钮 -->
-        <g-svgIcon v-if="icon" :name="icon" class="m-auto"
-            :class="sizeEnum[sizeKey].icon"
-            :color="iconColor"
-            :fillClass="iconClass"
-        ></g-svgIcon>
+        <g-svg-icon v-if="icon" :name="icon" class="m-auto" :class="sizeEnum[sizeKey].icon" :color="iconColor"
+            :fillClass="iconClass"></g-svg-icon>
         <!-- 文字按钮 -->
         <slot v-else />
     </button>
@@ -50,7 +44,8 @@ const sizeEnum: any = {
 }
 </script>
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
+import GSvgIcon from '../svg-icon/index.vue'
 
 const props = defineProps({
     // icon 图标
@@ -109,4 +104,5 @@ const onBtnClick = () => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

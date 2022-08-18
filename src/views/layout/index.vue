@@ -22,7 +22,6 @@
 import headerVue from './components/header/index.vue'
 import mainVue from './components/main/index.vue'
 import floatingVue from './components/floating/index.vue'
-import { ref } from 'vue'
 </script>
 
 <style lang="scss" scoped></style>

@@ -10,24 +10,29 @@
  */
 
 // 从 itemElement 中抽离出所有的 imgElements
-export const getImgElements = (itemElements: any) => {
-    const imgElements: any = []
-    itemElements.forEach((el: any) => {
-        imgElements.push(...el.getElementsByTagName('img'))
+export const getImgElements = (itemElements: HTMLElement[]) => {
+    const imgElements: HTMLImageElement[] = []
+    itemElements.forEach((el: HTMLElement) => {
+        imgElements.push(...Array.from(el.getElementsByTagName('img')))
     })
     return imgElements
 }
 
 // 生成所有的图片链接数组
-export const getAllImg = (imgElements: any[]) => {
-    return imgElements.map((imgElement) => {
+export const getAllImg = (imgElements: HTMLImageElement[]) => {
+    return imgElements.map((imgElement: HTMLImageElement) => {
         return imgElement.src
     })
 }
 
+interface PResolve {
+    img: string,
+    index: number
+}
+
 // 监听图片数组加载完成(promise)
-export const onComplateImgs = (imgs: any[]) => {
-    const promiseAll: any = []
+export const onComplateImgs = (imgs: string[]) => {
+    const promiseAll: Promise<PResolve>[] = []
     imgs.forEach((img, index) => {
         promiseAll[index] = new Promise((resolve, reject) => {
             const imageObj = new Image()
@@ -45,13 +50,13 @@ export const onComplateImgs = (imgs: any[]) => {
 
 // 返回列高对象中最小的高度
 export const getMinHeight = (columnHeightObj: any) => {
-    const columnHeightArr: any = Object.values(columnHeightObj)
+    const columnHeightArr: number[] = Object.values(columnHeightObj)
     return Math.min(...columnHeightArr)
 }
 
 // 返回列高对象中最大的高度
 export const getMaxHeight = (columnHeightObj: any) => {
-    const columnHeightArr: any = Object.values(columnHeightObj)
+    const columnHeightArr: number[] = Object.values(columnHeightObj)
     return Math.max(...columnHeightArr)
 }
 

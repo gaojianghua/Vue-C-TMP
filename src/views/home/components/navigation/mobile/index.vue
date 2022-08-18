@@ -10,29 +10,18 @@
 -->
 <template>
     <div class="bg-white dark:bg-zinc-900 sticky top-0 left-0 z-10">
-        <ul
-            ref="ulTarget"
-            class="relative flex overflow-x-auto p-1 text-xs text-zinc-600 overflow-hidden"
-        >
-            <li
-                ref="sliderTarget"
-                :style="sliderStyle"
-                class="absolute h-[22px] bg-zinc-900 dark:bg-zinc-800 rounded-lg duration-200"
-            ></li>
-            <li
-                @click="onShowPopup"
-                class="fixed top-0 right-[-1px] h-4 px-1 flex items-center bg-white dark:bg-zinc-900 z-20 shadow-l-white dark:shadow-l-zinc"
-            >
-                <g-svgIcon class="w-1.5 h-1.5" name="vite"></g-svgIcon>
+        <ul ref="ulTarget" class="relative flex overflow-x-auto p-1 text-xs text-zinc-600 overflow-hidden">
+            <!-- 菜单按钮 -->
+            <li @click="onShowPopup"
+                class="fixed top-0 right-[-1px] h-4 px-1 flex items-center bg-white dark:bg-zinc-900 z-20 shadow-l-white dark:shadow-l-zinc">
+                <g-svg-icon class="w-1.5 h-1.5" name="vite"></g-svg-icon>
             </li>
-            <li
-                v-for="(item, i) in categorys"
-                :key="i"
-                class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4"
-                :class="{ 'text-zinc-100': currentCategoryIndex() === i }"
-                :ref="setItemRef"
-                @click="onItemClick(item)"
-            >
+            <!-- 滑块 -->
+            <li ref="sliderTarget" :style="sliderStyle"
+                class="absolute h-[22px] bg-zinc-900 dark:bg-zinc-800 rounded-lg duration-200"></li>
+            <!-- category item -->
+            <li v-for="(item, i) in categorys" :key="i" class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4"
+                :class="{ 'text-zinc-100': currentCategoryIndex() === i }" :ref="setItemRef" @click="onItemClick(item)">
                 {{ item.name }}
             </li>
         </ul>
@@ -47,6 +36,7 @@ import { useScroll } from '@vueuse/core'
 import { onBeforeUpdate, ref, watch } from 'vue'
 import Menu from '@/views/home/components/menu/index.vue'
 import useStore from '@/store'
+import { SCategorys } from '@/store/common';
 const { categorys, changeCurrentCategory, currentCategoryIndex } =
     useStore().common
 // 滑块
@@ -57,7 +47,7 @@ const sliderStyle = ref({
 // 选中 item 下标
 //const currentCategoryIndex = ref(0)
 // 获取所有的 item 元素
-let itemRefs: any = []
+let itemRefs: any[] = []
 const setItemRef = (el: any) => {
     if (el) {
         itemRefs.push(el)
@@ -68,7 +58,7 @@ onBeforeUpdate(() => {
     itemRefs = []
 })
 // 获取 ul 元素
-const ulTarget = ref()
+const ulTarget = ref<HTMLElement>()
 // 通过 vueuse -> useScroll 获取响应式的 scroll 滚动距离
 const { x: ulScrollLeft } = useScroll(ulTarget)
 // watch 监听
@@ -83,7 +73,7 @@ watch(
     }
 )
 // item 点击事件
-const onItemClick = (item: any) => {
+const onItemClick = (item: SCategorys) => {
     changeCurrentCategory(item)
     isVisable.value = false
 }

@@ -17,7 +17,7 @@ export const getOSSClient = async () => {
             return {
                 accessKeyId: Credentials.AccessKeyId,
                 accessKeySecret: Credentials.AccessKeySecret,
-                stsToken: Credentials.SecurityToken,
+                stsToken: Credentials.SecurityToken
             }
         },
         refreshSTSTokenInterval: 5 * 1000

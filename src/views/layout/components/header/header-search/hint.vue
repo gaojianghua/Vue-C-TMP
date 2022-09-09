@@ -10,10 +10,13 @@
 -->
 <template>
     <div class="">
-        <div v-for="(item, i) in hintData" :key="i"
+        <div
+            v-for="(item, i) in hintData"
+            :key="i"
             class="py-1 pl-1 text-base font-bold text-zinc-500 rounded cursor-pointer duration-300 hover:bg-zinc-200 dark:hover:bg-zinc-900"
-            v-html="highlightText(item)" @click="onItemClick(item)">
-        </div>
+            v-html="highlightText(item)"
+            @click="onItemClick(item)"
+        ></div>
     </div>
 </template>
 
@@ -30,8 +33,8 @@ const props = defineProps({
     // 搜索文本
     searchText: {
         type: String,
-        required: true,
-    },
+        required: true
+    }
 })
 const emits = defineEmits([EMITS_ITEM_CLICK])
 
@@ -66,5 +69,4 @@ const highlightText = (text: string) => {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

@@ -10,27 +10,55 @@
 -->
 <template>
     <div class="bg-white dark:bg-zinc-900 xl:dark:bg-zinc-800 rounded pb-1">
-        <div class="relative w-full rounded cursor-zoom-in group" :style="{
-            backgroundColor: randomRGB()
-        }" @click="onToPinsClick">
+        <div
+            class="relative w-full rounded cursor-zoom-in group"
+            :style="{
+                backgroundColor: randomRGB()
+            }"
+            @click="onToPinsClick"
+        >
             <!-- 图片 -->
-            <img v-lazy ref="imgTaget" class="w-full rounded bg-transparent" :src="data.photo" alt="" :style="{
+            <img
+                v-lazy
+                ref="imgTaget"
+                class="w-full rounded bg-transparent"
+                :src="data.photo"
+                alt=""
+                :style="{
                 height: (width! / data.photoWidth) * data.photoHeight + 'px'
-            }" />
+            }"
+            />
             <!-- 遮罩层 -->
             <div
-                class="hidden opacity-0 w-full h-full bg-zinc-900/50 absolute top-0 left-0 rounded duration-300 group-hover:opacity-100 xl:block">
+                class="hidden opacity-0 w-full h-full bg-zinc-900/50 absolute top-0 left-0 rounded duration-300 group-hover:opacity-100 xl:block"
+            >
                 <!-- 分享 -->
                 <g-button class="absolute top-1.5 left-1.5">分享</g-button>
                 <!-- 点赞 -->
-                <g-button class="absolute top-1.5 right-1.5" type="info" icon="heart"
-                    iconClass="fill-zinc-900 dark:fill-zinc-200"></g-button>
+                <g-button
+                    class="absolute top-1.5 right-1.5"
+                    type="info"
+                    icon="heart"
+                    iconClass="fill-zinc-900 dark:fill-zinc-200"
+                ></g-button>
                 <!-- 下载 -->
-                <g-button class="absolute bottom-1.5 left-1.5 bg-zinc-100/70" size="small" type="info" icon="download"
-                    iconClass="fill-zinc-900 dark:fill-zinc-200" @click="onDownload"></g-button>
+                <g-button
+                    class="absolute bottom-1.5 left-1.5 bg-zinc-100/70"
+                    size="small"
+                    type="info"
+                    icon="download"
+                    iconClass="fill-zinc-900 dark:fill-zinc-200"
+                    @click="onDownload"
+                ></g-button>
                 <!-- 全屏 -->
-                <g-button class="absolute bottom-1.5 right-1.5 bg-zinc-100/70" size="small" type="info" icon="full"
-                    iconClass="fill-zinc-900 dark:fill-zinc-200" @click="onImgFullscreen"></g-button>
+                <g-button
+                    class="absolute bottom-1.5 right-1.5 bg-zinc-100/70"
+                    size="small"
+                    type="info"
+                    icon="full"
+                    iconClass="fill-zinc-900 dark:fill-zinc-200"
+                    @click="onImgFullscreen"
+                ></g-button>
             </div>
         </div>
         <!-- 标题 -->
@@ -49,18 +77,18 @@
 import { computed, ref } from 'vue'
 import { randomRGB } from '@/utils/color'
 import { saveAs } from 'file-saver'
-import { message } from '@/libs';
-import { useElementBounding, useFullscreen } from '@vueuse/core';
+import { message } from '@/libs'
+import { useElementBounding, useFullscreen } from '@vueuse/core'
 
 const props = defineProps({
     // 数据
     data: {
         type: Object,
-        required: true,
+        required: true
     },
     // 宽度
     width: {
-        type: Number,
+        type: Number
     }
 })
 
@@ -82,14 +110,14 @@ const { enter: onImgFullscreen } = useFullscreen(imgTaget)
 // Pins 跳转记录, 记录图片的中心点(X | Y 位置 + 宽 | 高 一半)
 const {
     x: imgContainerX,
-    y:  imgContainerY,
+    y: imgContainerY,
     width: imgContainerWidth,
     height: imgContainerHeight
 } = useElementBounding(imgTaget)
 const imgContainerCenter = computed(() => {
     return {
         translateX: parseInt(String(imgContainerX.value + imgContainerWidth.value / 2)),
-        translateY: parseInt(String(imgContainerY.value + imgContainerHeight.value / 2)),
+        translateY: parseInt(String(imgContainerY.value + imgContainerHeight.value / 2))
     }
 })
 
@@ -102,5 +130,4 @@ const onToPinsClick = () => {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

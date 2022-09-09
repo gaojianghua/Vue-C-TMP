@@ -10,11 +10,17 @@
 -->
 <template>
     <transition name="down">
-        <div v-show="isVisable"
+        <div
+            v-show="isVisable"
             class="min-w-[420px] fixed top-[20px] left-[50%] translate-x-[-50%] z-50 flex items-center px-3 py-1.5 rounded-sm border cursor-pointer"
-            :class="styles[type as keyof typeof styles].containerClass">
-            <g-svg-icon :color="styles[type as keyof typeof styles].color" :name="styles[type as keyof typeof styles].icon" :fillClass="styles[type as keyof typeof styles].fillClass"
-                class="h-1.5 w-1.5 mr-1.5">
+            :class="styles[type as keyof typeof styles].containerClass"
+        >
+            <g-svg-icon
+                :color="styles[type as keyof typeof styles].color"
+                :name="styles[type as keyof typeof styles].icon"
+                :fillClass="styles[type as keyof typeof styles].fillClass"
+                class="h-1.5 w-1.5 mr-1.5"
+            >
             </g-svg-icon>
             <span class="text-sm" :class="styles[type as keyof typeof styles].textClass">
                 {{ content }}
@@ -29,7 +35,7 @@ const WARN = 'warn'
 const ERROR = 'error'
 const typeEnum = [SUCCESS, WARN, ERROR]
 </script>
-<script setup lang='ts'>
+<script setup lang="ts">
 import { IStyles, IStylesItem } from '@/types'
 import { Style } from 'util'
 import { onMounted, ref } from 'vue'
@@ -47,7 +53,7 @@ const props = defineProps({
             }
             return result
         }
-    } ,
+    },
     // 消息内容
     content: {
         type: String,
@@ -87,7 +93,7 @@ const styles: IStyles = {
         fillClass: 'fill-success-300',
         textClass: 'text-success-300',
         containerClass: 'bg-success-100 border-success-200 hover:shadow-lg hover:shadow-success-100'
-    } as IStylesItem,
+    } as IStylesItem
 }
 // 控制显示
 const isVisable = ref<boolean>(false)
@@ -107,7 +113,7 @@ onMounted(() => {
 })
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .down-enter-active,
 .down-leave-active {
     transition: all v-bind(duration);

@@ -1,8 +1,8 @@
-import { h, render } from "vue"
+import { h, render } from 'vue'
 import messageComponent from './index.vue'
 
 /**
- * @description  : 
+ * @description  :
  * @param         {string} type 类型: success warn error
  * @param         {string} content 描述文本
  * @param         {string} duration 展示时间(毫秒), ,默认3000

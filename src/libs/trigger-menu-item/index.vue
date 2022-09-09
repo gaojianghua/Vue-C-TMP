@@ -1,5 +1,5 @@
 <template>
-    <div class='w-5 flex flex-col items-center justify-center mx-0.5' @click="onItemClick">
+    <div class="w-5 flex flex-col items-center justify-center mx-0.5" @click="onItemClick">
         <g-svg-icon :name="icon" :fillClass="iconClass" class="w-2 h-2"></g-svg-icon>
         <p class="text-sm mt-0.5" :class="textClass">
             <slot />
@@ -7,8 +7,8 @@
     </div>
 </template>
 
-<script setup lang='ts'>
-import router from '@/router';
+<script setup lang="ts">
+import router from '@/router'
 import { ref } from 'vue'
 
 const props = defineProps({
@@ -36,5 +36,4 @@ const onItemClick = () => {
 }
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

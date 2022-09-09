@@ -21,9 +21,7 @@
                 fillClass="fill-zinc-800"
             ></g-svg-icon>
             <!-- 没有更多数据 -->
-            <p v-if="isFinished" class="text-center text-base text-zinc-400">
-                已经没有更多数据了
-            </p>
+            <p v-if="isFinished" class="text-center text-base text-zinc-400">已经没有更多数据了</p>
         </div>
     </div>
 </template>
@@ -36,13 +34,13 @@ const props = defineProps({
     // 是否处于加载状态
     modelValue: {
         type: Boolean,
-        required: true,
+        required: true
     },
     // 数据是否加载完成
     isFinished: {
         type: Boolean,
-        default: false,
-    },
+        default: false
+    }
 })
 
 const emits = defineEmits(['onLoad', 'update:modelValue'])

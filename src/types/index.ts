@@ -21,24 +21,24 @@ export interface IList {
     _style?: any
 }
 export interface ILogin {
-    username: string,
-    password: string,
+    username: string
+    password: string
     loginType: 'username' | 'qq' | 'weixin'
 }
 export interface IRegister {
-    username: string,
-    password: string,
+    username: string
+    password: string
     confirmPassword: string
 }
-export interface IStylesItem{
-    icon: string,
-    color: string,
-    fillClass: string,
-    textClass: string,
+export interface IStylesItem {
+    icon: string
+    color: string
+    fillClass: string
+    textClass: string
     containerClass: string
 }
 export interface IStyles {
-    warn: IStylesItem,
-    error: IStylesItem,
+    warn: IStylesItem
+    error: IStylesItem
     success: IStylesItem
 }

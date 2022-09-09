@@ -1,9 +1,19 @@
 <template>
-    <div class=' overflow-auto flex flex-col items-center'>
-        <g-svg-icon v-if="isMobileTerminal" name="close" fillClass="fill-zinc-900 dark:fill-zinc-200" @click="close"
-            class=" w-3 h-3 p-0.5 m-1 ml-auto"></g-svg-icon>
-        <img :src="blob" ref="imageTarget" alt="">
-        <g-button :loading="loading" :isActiveAnim="false" class="mt-4 w-[80%] xl:1/2" @click="onConfirmClick">确定
+    <div class="overflow-auto flex flex-col items-center">
+        <g-svg-icon
+            v-if="isMobileTerminal"
+            name="close"
+            fillClass="fill-zinc-900 dark:fill-zinc-200"
+            @click="close"
+            class="w-3 h-3 p-0.5 m-1 ml-auto"
+        ></g-svg-icon>
+        <img :src="blob" ref="imageTarget" alt="" />
+        <g-button
+            :loading="loading"
+            :isActiveAnim="false"
+            class="mt-4 w-[80%] xl:1/2"
+            @click="onConfirmClick"
+            >确定
         </g-button>
     </div>
 </template>
@@ -30,14 +40,14 @@ const MBOptions = {
 }
 </script>
 
-<script setup lang='ts'>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { isMobileTerminal } from '@/utils/flexible';
+import { isMobileTerminal } from '@/utils/flexible'
 import 'cropperjs/dist/cropper.css'
 import Cropper from 'cropperjs'
-import { getOSSClient } from '@/utils/sts';
-import useStore from '@/store';
-import { message } from '@/libs';
+import { getOSSClient } from '@/utils/sts'
+import useStore from '@/store'
+import { message } from '@/libs'
 import { userApi } from '@/api'
 
 const props = defineProps({
@@ -69,14 +79,16 @@ const onConfirmClick = () => {
     })
 }
 // 进行 OSS 上传
-let ossClient: any;
+let ossClient: any
 const putObjectToOSS = async (file: File) => {
     if (!ossClient) {
         ossClient = await getOSSClient()
     }
     try {
         const fileTypeArr = file.type.split('/')
-        const fileName = `${useStore().user.userInfo.nickname}/${Date.now()}.${fileTypeArr[fileTypeArr.length - 1]}`
+        const fileName = `${useStore().user.userInfo.nickname}/${Date.now()}.${
+            fileTypeArr[fileTypeArr.length - 1]
+        }`
         const res = await ossClient.put(`web-c-tmp/${fileName}`, file)
         onChangeProfile(res.url)
     } catch (error) {
@@ -96,9 +108,6 @@ const onChangeProfile = async (avatar: string) => {
     loading.value = false
     close()
 }
-
-
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

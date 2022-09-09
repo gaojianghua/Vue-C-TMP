@@ -75,8 +75,8 @@ import { ref, watch } from 'vue'
 const props = defineProps({
     modelValue: {
         required: true,
-        type: String,
-    },
+        type: String
+    }
 })
 
 const emits = defineEmits([
@@ -85,7 +85,7 @@ const emits = defineEmits([
     EMIT_CLEAR,
     EMIT_INPUT,
     EMIT_FOCUS,
-    EMIT_BLUR,
+    EMIT_BLUR
 ])
 // 文本内容
 const inputValue = useVModel(props)

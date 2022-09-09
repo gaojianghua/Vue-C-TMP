@@ -6,9 +6,12 @@
         </div>
         <!-- 气泡展示 -->
         <transition name="slide">
-            <div ref="contentTarget" v-if="isViable"
+            <div
+                ref="contentTarget"
+                v-if="isViable"
                 class="absolute z-20 bg-white dark:bg-zinc-900 border dark:border-zinc-700 rounded-md"
-                :style="contentStyle">
+                :style="contentStyle"
+            >
                 <!-- 匿名插槽: 弹出层视图中的内容 -->
                 <slot />
             </div>
@@ -28,12 +31,7 @@ const PROP_BOTTOM_LEFT = 'bottom-left'
 // 右下
 const PROP_BOTTOM_RIGHT = 'bottom-right'
 // 方位数组
-const placementEnum = [
-    PROP_TOP_LEFT,
-    PROP_TOP_RIGHT,
-    PROP_BOTTOM_LEFT,
-    PROP_BOTTOM_RIGHT
-]
+const placementEnum = [PROP_TOP_LEFT, PROP_TOP_RIGHT, PROP_BOTTOM_LEFT, PROP_BOTTOM_RIGHT]
 </script>
 
 <script setup lang="ts">
@@ -47,9 +45,7 @@ const props = defineProps({
         validator(val: string) {
             const result = placementEnum.includes(val)
             if (!result) {
-                throw new Error(
-                    `你的 placement 必须是 ${placementEnum.join('、')} 中的一个`
-                )
+                throw new Error(`你的 placement 必须是 ${placementEnum.join('、')} 中的一个`)
             }
             return result
         }
@@ -73,7 +69,7 @@ const onMouseleave = () => {
     timeout = setTimeout(() => {
         isViable.value = false
         timeout = null
-    }, DEAL_TIME);
+    }, DEAL_TIME)
 }
 
 // 计算元素的尺寸
@@ -102,25 +98,19 @@ watch(isViable, (val: boolean) => {
         switch (props.placement) {
             case PROP_TOP_LEFT:
                 contentStyle.value.top = 0
-                contentStyle.value.left =
-                    -useElementSize(contentTarget.value!).width! + 'px'
+                contentStyle.value.left = -useElementSize(contentTarget.value!).width! + 'px'
                 break
             case PROP_TOP_RIGHT:
                 contentStyle.value.top = 0
-                contentStyle.value.left =
-                    useElementSize(referenceTarget.value!).width! + 'px'
+                contentStyle.value.left = useElementSize(referenceTarget.value!).width! + 'px'
                 break
             case PROP_BOTTOM_LEFT:
-                contentStyle.value.top =
-                    useElementSize(referenceTarget.value!).height! + 'px'
-                contentStyle.value.left =
-                    -useElementSize(contentTarget.value!).width! + 'px'
+                contentStyle.value.top = useElementSize(referenceTarget.value!).height! + 'px'
+                contentStyle.value.left = -useElementSize(contentTarget.value!).width! + 'px'
                 break
             case PROP_BOTTOM_RIGHT:
-                contentStyle.value.top =
-                    useElementSize(referenceTarget.value!).height + 'px'
-                contentStyle.value.left =
-                    useElementSize(referenceTarget.value!).width + 'px'
+                contentStyle.value.top = useElementSize(referenceTarget.value!).height + 'px'
+                contentStyle.value.left = useElementSize(referenceTarget.value!).width + 'px'
                 break
             default:
                 break

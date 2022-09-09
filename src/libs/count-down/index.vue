@@ -1,5 +1,5 @@
 <template>
-    <div class='page'>
+    <div class="page">
         <slot>
             <p class="text-sm">
                 {{ showTime }}
@@ -17,7 +17,7 @@ const EMITS_CHANGE = 'change'
 const INTERVAL_COUNT = 1000
 </script>
 
-<script setup lang='ts'>
+<script setup lang="ts">
 import { computed, onUnmounted, ref, watch } from 'vue'
 import dayjs from './utils'
 
@@ -62,7 +62,7 @@ const durationFn = () => {
     }
 }
 /**
- * 倒计时结束 
+ * 倒计时结束
  */
 const close = () => {
     if (interval) {
@@ -79,10 +79,14 @@ onUnmounted(() => {
 /**
  * 开始倒计时
  */
-watch(() => props.time, (val: number) => {
-    duration.value = val
-    start()
-}, { immediate: true })
+watch(
+    () => props.time,
+    (val: number) => {
+        duration.value = val
+        start()
+    },
+    { immediate: true }
+)
 
 /**
  * 显示的时间格式
@@ -92,5 +96,4 @@ const showTime = computed(() => {
 })
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

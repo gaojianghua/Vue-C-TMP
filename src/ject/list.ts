@@ -17,9 +17,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 2,
@@ -29,9 +30,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 3,
@@ -41,9 +43,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 4,
@@ -53,9 +56,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 5,
@@ -65,9 +69,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 6,
@@ -77,9 +82,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 7,
@@ -89,9 +95,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 8,
@@ -101,9 +108,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 9,
@@ -113,9 +121,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 10,
@@ -125,9 +134,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 11,
@@ -137,9 +147,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 12,
@@ -149,9 +160,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 13,
@@ -161,9 +173,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 14,
@@ -173,9 +186,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 15,
@@ -185,9 +199,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 16,
@@ -197,9 +212,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 17,
@@ -209,9 +225,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 18,
@@ -221,9 +238,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 19,
@@ -233,9 +251,10 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
+        photoWidth: 480
     },
     {
         id: 20,
@@ -245,8 +264,9 @@ export const listData = [
         authorLike: 'https://www.pexels.com',
         avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png',
         photo: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
-        photoDownLink: 'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
+        photoDownLink:
+            'https://official-document.oss-cn-hangzhou.aliyuncs.com/163886061589163886061597.png',
         photoHeight: 280,
-        photoWidth: 480,
-    },
+        photoWidth: 480
+    }
 ]

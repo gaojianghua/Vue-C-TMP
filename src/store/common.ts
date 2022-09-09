@@ -41,7 +41,7 @@ const useCommonStore = defineStore('common', {
             this.currentCategory = newCategory
         },
         currentCategoryIndex() {
-            return this.categorys.findIndex(item => {
+            return this.categorys.findIndex((item) => {
                 return item.id === this.currentCategory.id
             })
         },
@@ -65,8 +65,8 @@ const useCommonStore = defineStore('common', {
         },
         afterRestore: (context) => {
             console.log('After hydration...:' + context)
-        },
-    },
+        }
+    }
 })
 
 export default useCommonStore

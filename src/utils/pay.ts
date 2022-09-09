@@ -14,9 +14,7 @@ export const alipay = async (title: string, desc: string) => {
         totalAmount: '0.01',
         body: desc,
         isMobile: isMobileTerminal.value
-    }
-        
-    )
+    })
     // 解构
     window.location.href = decodeURIComponent(encodeURI)
 }

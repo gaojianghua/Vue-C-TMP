@@ -34,10 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-    useScrollLock,
-    useVModel
-} from '@vueuse/core'
+import { useScrollLock, useVModel } from '@vueuse/core'
 import { watch } from 'vue'
 const props = defineProps({
     modelValue: {

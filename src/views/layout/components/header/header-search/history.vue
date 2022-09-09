@@ -9,21 +9,30 @@
  * Copyright (c) 2022 by 高江华 g598670138@163.com, All Rights Reserved. 
 -->
 <template>
-    <div class=''>
+    <div class="">
         <div class="flex items-center text-xs mb-1 text-zinc-400">
             <span>最新搜索</span>
-            <g-svg-icon name="all-delete"
+            <g-svg-icon
+                name="all-delete"
                 class="w-2.5 h-2.5 ml-1 p-0.5 cursor-pointer duration-300 rounded-sm hover:bg-zinc-100"
-                fillClass="fill-zinc-400" @click="onDeleteAllClick">
+                fillClass="fill-zinc-400"
+                @click="onDeleteAllClick"
+            >
             </g-svg-icon>
         </div>
         <div class="flex flex-wrap">
-            <div v-for="(item, index) in useStore().user.historys" :key="index"
+            <div
+                v-for="(item, index) in useStore().user.historys"
+                :key="index"
                 class="mr-2 mb-1.5 flex items-center cursor-pointer bg-zinc-100 px-1.5 py-0.5 text-zinc-900 text-sm font-bold rounded-sm duration-300 hover:bg-zinc-200"
-                @click="onItemClick(item)">
+                @click="onItemClick(item)"
+            >
                 <span>{{ item }}</span>
-                <g-svg-icon name="delete" class="w-2.5 h-2.5 p-0.5 ml-1 duration-300 rounded-sm hover:bg-zinc-100"
-                    @click.stop="onDeleteClick(index)">
+                <g-svg-icon
+                    name="delete"
+                    class="w-2.5 h-2.5 p-0.5 ml-1 duration-300 rounded-sm hover:bg-zinc-100"
+                    @click.stop="onDeleteClick(index)"
+                >
                 </g-svg-icon>
             </div>
         </div>
@@ -34,10 +43,10 @@
 const EMITS_ITEM_CLICK = 'itemClick'
 </script>
 
-<script setup lang='ts'>
+<script setup lang="ts">
 import { ref } from 'vue'
-import useStore from '@/store';
-import { confirm } from '@/libs';
+import useStore from '@/store'
+import { confirm } from '@/libs'
 
 const emits = defineEmits([EMITS_ITEM_CLICK])
 
@@ -67,5 +76,4 @@ const onItemClick = (item: string) => {
 }
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

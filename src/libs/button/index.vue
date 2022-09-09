@@ -1,16 +1,26 @@
 <template>
-    <button class="text-sm text-center rounded duration-150 flex justify-center items-center" :class="[
-        typeEnum[type],
-        sizeEnum[sizeKey].button,
-        {
-            'active:scale-105': isActiveAnim
-        }
-    ]" @click.stop="onBtnClick">
+    <button
+        class="text-sm text-center rounded duration-150 flex justify-center items-center"
+        :class="[
+            typeEnum[type],
+            sizeEnum[sizeKey].button,
+            {
+                'active:scale-105': isActiveAnim
+            }
+        ]"
+        @click.stop="onBtnClick"
+    >
         <!-- loading -->
         <g-svg-icon v-if="loading" name="loading" class="w-2 h-2 animate-spin mr-1"></g-svg-icon>
         <!-- icon按钮 -->
-        <g-svg-icon v-if="icon" :name="icon" class="m-auto" :class="sizeEnum[sizeKey].icon" :color="iconColor"
-            :fillClass="iconClass"></g-svg-icon>
+        <g-svg-icon
+            v-if="icon"
+            :name="icon"
+            class="m-auto"
+            :class="sizeEnum[sizeKey].icon"
+            :color="iconColor"
+            :fillClass="iconClass"
+        ></g-svg-icon>
         <!-- 文字按钮 -->
         <slot v-else />
     </button>
@@ -19,7 +29,8 @@
 <script lang="ts">
 // 按钮风格
 const typeEnum: any = {
-    primary: 'text-white bg-zinc-800 dark:bg-zinc-900 hover:bg-zinc-900 dark:hover:bg-zinc-700 active:bg-zinc-800 dark:active:bg-zinc-700',
+    primary:
+        'text-white bg-zinc-800 dark:bg-zinc-900 hover:bg-zinc-900 dark:hover:bg-zinc-700 active:bg-zinc-800 dark:active:bg-zinc-700',
     main: 'text-white bg-main dark:bg-zinc-900 hover:bg-hover-main dark:hover:bg-zinc-700 active:bg-main dark:active:bg-zinc-700',
     info: 'text-zinc-800 dark:text-zinc-300 bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 active:bg-zinc-200 dark:active:bg-zinc-700'
 }
@@ -72,7 +83,7 @@ const props = defineProps({
         type: String,
         default: 'default',
         validator(val: string) {
-            const keys = Object.keys(sizeEnum).filter(key => !key.includes('icon'))
+            const keys = Object.keys(sizeEnum).filter((key) => !key.includes('icon'))
             const result = keys.includes(val)
             if (!result) {
                 throw new Error(`你的 size 必须是 ${keys.join('、')} 中的一个`)
@@ -89,7 +100,7 @@ const props = defineProps({
     loading: {
         type: Boolean,
         default: false
-    },
+    }
 })
 
 const emits = defineEmits(['click'])
@@ -104,5 +115,4 @@ const onBtnClick = () => {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

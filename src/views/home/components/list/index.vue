@@ -11,8 +11,13 @@
 <template>
     <div>
         <g-infinite v-model="loading" :isFinished="isFinished" @onLoad="getPexelsData">
-            <g-waterfall class="px-1 w-full" :data="list" nodeKey="id" :column="isMobileTerminal ? 2 : 5"
-                :picturePreReading="false">
+            <g-waterfall
+                class="px-1 w-full"
+                :data="list"
+                nodeKey="id"
+                :column="isMobileTerminal ? 2 : 5"
+                :picturePreReading="false"
+            >
                 <template v-slot="{ item, width }">
                     <item-vue :data="item" :width="width" @click="onToPins"></item-vue>
                 </template>
@@ -37,10 +42,7 @@ import pinsVue from '@/views/pins/components/pins.vue'
 import gsap from 'gsap'
 import { useEventListener } from '@vueuse/core'
 
-const {
-    currentCategory,
-    searchText
-} = useStore().common
+const { currentCategory, searchText } = useStore().common
 
 const loading = ref(false)
 const isFinished = ref(false)
@@ -49,7 +51,7 @@ const isFinished = ref(false)
 const list = ref<IList[]>([])
 let query = {
     page: 1,
-    size: 20,
+    size: 20
 }
 const getPexelsData = () => {
     // 数据全部加载完 return
@@ -117,10 +119,9 @@ const getPexelsData = () => {
 //     }
 // )
 
-
 // 控制pins展示
 const isVisiablePins = ref<boolean>(false)
-// 保存当前选中项 
+// 保存当前选中项
 const currentPins = ref<any>({})
 
 // 监听浏览器后退事件
@@ -168,8 +169,6 @@ const leave = (el: any, done: any) => {
         onComplete: done
     })
 }
-
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

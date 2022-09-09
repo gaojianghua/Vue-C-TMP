@@ -1,6 +1,6 @@
-import { message } from "./libs";
-import router from "./router";
-import useStore from "./store";
+import { message } from './libs'
+import router from './router'
+import useStore from './store'
 /**
  * 处理需要登录页面的访问权限
  */

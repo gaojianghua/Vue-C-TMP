@@ -13,7 +13,7 @@
         class="relative"
         ref="containerTarget"
         :style="{
-            height: containerHeight + 'px',
+            height: containerHeight + 'px'
         }"
     >
         <!-- 数据渲染 -->
@@ -25,7 +25,7 @@
                 :style="{
                     width: columnWidth + 'px',
                     left: item._style?.left + 'px',
-                    top: item._style?.top + 'px',
+                    top: item._style?.top + 'px'
                 }"
             >
                 <slot :item="item" :width="columnWidth" :index="index"></slot>
@@ -37,15 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-    computed,
-    onMounted,
-    PropType,
-    ref,
-    watch,
-    nextTick,
-    onUnmounted,
-} from 'vue'
+import { computed, onMounted, PropType, ref, watch, nextTick, onUnmounted } from 'vue'
 import { IList } from '@/types'
 import {
     getAllImg,
@@ -53,39 +45,39 @@ import {
     getMinHeightColumn,
     onComplateImgs,
     getMinHeight,
-    getMaxHeight,
+    getMaxHeight
 } from './utils'
 
 const props = defineProps({
     // 数据源
     data: {
         type: Array as PropType<IList[]>,
-        required: true,
+        required: true
     },
     // 唯一标识
     nodeKey: {
-        type: String,
+        type: String
     },
     // 列数
     column: {
         type: Number,
-        default: 2,
+        default: 2
     },
     // 列间距
     columnSpacing: {
         type: Number,
-        default: 20,
+        default: 20
     },
     // 行间距
     rowSpacing: {
         type: Number,
-        default: 20,
+        default: 20
     },
     // 是否需要进行图片预读取
     picturePreReading: {
         type: Boolean,
-        default: true,
-    },
+        default: true
+    }
 })
 // 容器的高度
 const containerHeight = ref(0)
@@ -106,17 +98,12 @@ const containerWidth = ref(0)
 const containerLeft = ref(0)
 // 计算容器总宽度
 const useContainerWidth = () => {
-    let { paddingLeft, paddingRight } = getComputedStyle(
-        containerTarget.value!,
-        null
-    )
+    let { paddingLeft, paddingRight } = getComputedStyle(containerTarget.value!, null)
     paddingLeft = paddingLeft.replace('px', '')
     paddingRight = paddingRight.replace('px', '')
     containerLeft.value = parseInt(paddingLeft)
     containerWidth.value =
-        containerTarget.value!.offsetWidth -
-        parseInt(paddingLeft) -
-        parseInt(paddingRight)
+        containerTarget.value!.offsetWidth - parseInt(paddingLeft) - parseInt(paddingRight)
 }
 // 列宽
 const columnWidth = ref(0)
@@ -127,8 +114,7 @@ const columnSpacingTotal = computed(() => {
 // 计算列宽
 const useColumnWidth = () => {
     useContainerWidth()
-    columnWidth.value =
-        (containerWidth.value - columnSpacingTotal.value) / props.column
+    columnWidth.value = (containerWidth.value - columnSpacingTotal.value) / props.column
 }
 
 onMounted(() => {
@@ -192,9 +178,7 @@ onUnmounted(() => {
 // 返回下一个 item 的left
 const getItemLeft = () => {
     const column: number = Number(getMinHeightColumn(columnHeightObj.value))
-    return (
-        column * (columnWidth.value + props.columnSpacing) + containerLeft.value
-    )
+    return column * (columnWidth.value + props.columnSpacing) + containerLeft.value
 }
 // 返回下一个 item 的top
 const getItemTop = () => {
@@ -204,8 +188,7 @@ const getItemTop = () => {
 // 指定列高度自增
 const increasingHeight = (index: number) => {
     const minHeightColumn: string = getMinHeightColumn(columnHeightObj.value)!
-    columnHeightObj.value[minHeightColumn] +=
-        itemHeights[index] + props.rowSpacing
+    columnHeightObj.value[minHeightColumn] += itemHeights[index] + props.rowSpacing
 }
 
 // 触发计算
@@ -228,7 +211,7 @@ watch(
     },
     {
         deep: true,
-        immediate: true,
+        immediate: true
     }
 )
 // 重新构建瀑布流

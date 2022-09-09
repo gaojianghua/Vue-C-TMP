@@ -5,8 +5,8 @@ export default [
         // 配置对象
         popover: {
             title: 'logo',
-            description: '点击可返回首页',
-        },
+            description: '点击可返回首页'
+        }
     },
     {
         // 在哪个元素高亮
@@ -14,8 +14,8 @@ export default [
         // 配置对象
         popover: {
             title: '搜索',
-            description: '搜索您期望的图片',
-        },
+            description: '搜索您期望的图片'
+        }
     },
     {
         // 在哪个元素高亮
@@ -25,7 +25,7 @@ export default [
             title: '风格',
             description: '选择一个您喜欢的风格',
             position: 'left'
-        },
+        }
     },
     {
         // 在哪个元素高亮
@@ -35,7 +35,7 @@ export default [
             title: '账户',
             description: '这里展示了您的账户信息',
             position: 'left'
-        },
+        }
     },
     {
         // 在哪个元素高亮
@@ -45,7 +45,7 @@ export default [
             title: '引导',
             description: '这里可以再次查看引导信息',
             position: 'left'
-        },
+        }
     },
     {
         // 在哪个元素高亮
@@ -55,6 +55,6 @@ export default [
             title: '反馈',
             description: '您的任何不满都可以在这里告诉我们',
             position: 'left'
-        },
-    },
+        }
+    }
 ]

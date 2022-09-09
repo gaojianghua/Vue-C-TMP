@@ -1,15 +1,19 @@
 <template>
-    <div class=''>
+    <div class="">
         <!-- 蒙版 -->
         <transition name="fade">
-            <div v-if="isVisible" @click="close" class=" w-screen h-screen bg-zinc-900/80 z-40 fixed top-0 left-0">
-
-            </div>
+            <div
+                v-if="isVisible"
+                @click="close"
+                class="w-screen h-screen bg-zinc-900/80 z-40 fixed top-0 left-0"
+            ></div>
         </transition>
         <!-- 内容区 -->
         <transition name="up">
-            <div v-if="isVisible"
-                class=" max-w-[80%] max-h-[80%] overflow-auto fixed top-[10%] left-[50%] translate-x-[-50%] z-50 px-2 py-1.5 rounded-sm border dark:border-zinc-600 cursor-pointer bg-white dark:bg-zinc-800 xl:min-w-[35%]">
+            <div
+                v-if="isVisible"
+                class="max-w-[80%] max-h-[80%] overflow-auto fixed top-[10%] left-[50%] translate-x-[-50%] z-50 px-2 py-1.5 rounded-sm border dark:border-zinc-600 cursor-pointer bg-white dark:bg-zinc-800 xl:min-w-[35%]"
+            >
                 <!-- 标题 -->
                 <div v-if="title" class="text-lg font-bold text-zinc-900 dark:text-zinc-200 mb-2">
                     {{ title }}
@@ -32,9 +36,9 @@
     </div>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
 import { ref } from 'vue'
-import { useVModel } from '@vueuse/core';
+import { useVModel } from '@vueuse/core'
 const props = defineProps({
     // 控制开关
     modelValue: {
@@ -43,7 +47,7 @@ const props = defineProps({
     },
     // 标题
     title: {
-        type: String,
+        type: String
     },
     // 取消按钮文本
     cancelText: {
@@ -80,7 +84,7 @@ const close = () => {
         if (props.close) {
             props.close()
         }
-    }, parseInt(duration.replace('0.', '').replace('s', '')) * 100);
+    }, parseInt(duration.replace('0.', '').replace('s', '')) * 100)
 }
 // 取消按钮点击事件
 const onCancelClick = () => {
@@ -98,7 +102,7 @@ const onConfirmClick = () => {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .fade-enter-active,
 .fade-leave-active {
     transition: all v-bind(duration);

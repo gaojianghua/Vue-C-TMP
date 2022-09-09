@@ -14,7 +14,11 @@
             <template #dropdown>
                 <div>
                     <!-- 搜索提示 -->
-                    <hint-vue :searchText="inputValue" v-show="inputValue" @itemClick="onSearchHandler"></hint-vue>
+                    <hint-vue
+                        :searchText="inputValue"
+                        v-show="inputValue"
+                        @itemClick="onSearchHandler"
+                    ></hint-vue>
                     <!-- 历史记录 -->
                     <history-vue v-show="!inputValue" @itemClick="onSearchHandler"></history-vue>
                     <!-- 推荐主题 -->
@@ -27,10 +31,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import useStore from '@/store';
+import useStore from '@/store'
 import hintVue from './hint.vue'
-import historyVue from './history.vue';
-import themeVue from './theme.vue';
+import historyVue from './history.vue'
+import themeVue from './theme.vue'
 
 const inputValue = ref('')
 // 搜索回调
@@ -43,5 +47,4 @@ const onSearchHandler = (val: string) => {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

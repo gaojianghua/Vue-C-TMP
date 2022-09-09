@@ -9,9 +9,7 @@
  * Copyright (c) 2022 by 高江华 g598670138@163.com, All Rights Reserved. 
 -->
 <template>
-    <div
-        class="bg-white dark:bg-zinc-800 sticky top-0 left-0 w-full z-10 duration-500"
-    >
+    <div class="bg-white dark:bg-zinc-800 sticky top-0 left-0 w-full z-10 duration-500">
         <ul
             class="w-[800px] relative flex flex-wrap justify-center overflow-x-auto px-[10px] pt-1 text-xs text-zinc-600 duration-300 overflow-hidden mx-auto"
             :class="[isOpenCategory ? 'h-[90px]' : 'h-[50px]']"
@@ -22,7 +20,7 @@
                 class="shrink-0 px-1.5 z-10 duration-200 text-zinc-800 dark:text-zinc-500 dark:hover:text-zinc-300 text-base font-bold h-3 leading-3 cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-900 rounded mr-1 mb-1"
                 :class="{
                     'text-zinc-900 dark:text-zinc-300 bg-zinc-200 dark:bg-zinc-900':
-                        currentCategoryIndex() === i,
+                        currentCategoryIndex() === i
                 }"
                 @click="onItemClick(item)"
             >
@@ -46,9 +44,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import useStore from '@/store'
-import { SCategorys } from '@/store/common';
-const { categorys, changeCurrentCategory, currentCategoryIndex } =
-    useStore().common
+import { SCategorys } from '@/store/common'
+const { categorys, changeCurrentCategory, currentCategoryIndex } = useStore().common
 
 // 状态切换处理
 const isOpenCategory = ref<boolean>(false)

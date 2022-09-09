@@ -12,14 +12,19 @@
     <div>
         <!-- 蒙版 -->
         <transition name="fade">
-            <div v-if="isVisible" class=" w-screen h-screen bg-zinc-900/80 z-40 fixed top-0 left-0" @click="close">
-            </div>
+            <div
+                v-if="isVisible"
+                class="w-screen h-screen bg-zinc-900/80 z-40 fixed top-0 left-0"
+                @click="close"
+            ></div>
         </transition>
         <!-- 内容 -->
         <transition name="up">
-            <div v-if="isVisible"
+            <div
+                v-if="isVisible"
                 class="w-[80%] fixed top-1/3 left-[50%] translate-x-[-50%] z-50 px-2 py-1.5 rounded-sm border dark:border-zinc-600 cursor-pointer bg-white dark:bg-zinc-800 xl:w-[35%]"
-                @click="close">
+                @click="close"
+            >
                 <!-- 标题 -->
                 <div class="text-lg font-bold text-zinc-900 dark:text-zinc-200 mb-2">
                     {{ title }}
@@ -42,14 +47,14 @@
     </div>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import GButton from '../button/index.vue'
 
 const props = defineProps({
     // 标题
     title: {
-        type: String,
+        type: String
     },
     // 描述
     content: {
@@ -98,7 +103,7 @@ const close = () => {
         if (props.close) {
             props.close()
         }
-    }, parseInt(duration.replace('0.', '').replace('s', '')) * 100);
+    }, parseInt(duration.replace('0.', '').replace('s', '')) * 100)
 }
 // 取消按钮点击事件
 const onCancelClick = () => {
@@ -116,7 +121,7 @@ const onConfirmClick = () => {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .fade-enter-active,
 .fade-leave-active {
     transition: all v-bind(duration);

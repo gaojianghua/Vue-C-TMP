@@ -8,7 +8,7 @@ const server = axios.create({
     baseURL: import.meta.env.VITE_BASE_API,
     timeout: 10000,
     headers: {
-        'icode': '8956',
+        icode: '8956',
         'Content-Type': 'application/json;charset=UTF-8'
     }
 })
@@ -27,19 +27,22 @@ server.interceptors.request.use(
     }
 )
 // 响应拦截
-server.interceptors.response.use((res) => {
-    const { code, msg, data } = res.data
-    if (code === 200) {
-        return data
+server.interceptors.response.use(
+    (res) => {
+        const { code, msg, data } = res.data
+        if (code === 200) {
+            return data
+        }
+        return Promise.reject(new Error(msg))
+    },
+    (error) => {
+        // token过期处理
+        if (error.response?.data?.code === 401) {
+            useStore().user.logout()
+        }
+        return Promise.reject(error)
     }
-    return Promise.reject(new Error(msg))
-}, (error) => {
-    // token过期处理
-    if (error.response?.data?.code === 401) {
-        useStore().user.logout()
-    }
-    return Promise.reject(error)
-})
+)
 // 请求封装
 interface ResType<T> {
     code: number
@@ -60,7 +63,7 @@ const http: Http = {
         return new Promise((resolve, reject) => {
             NProgress.start()
             server
-                .get(url, { params })   
+                .get(url, { params })
                 .then((res) => {
                     NProgress.done()
                     resolve(res.data)
@@ -121,7 +124,7 @@ const http: Http = {
             NProgress.start()
             server
                 .post(url, file, {
-                    headers: { 'Content-Type': 'multipart/form-data' },
+                    headers: { 'Content-Type': 'multipart/form-data' }
                 })
                 .then((res) => {
                     NProgress.done()
@@ -141,6 +144,6 @@ const http: Http = {
             document.body.removeChild(iframe)
         }
         document.body.appendChild(iframe)
-    },
+    }
 }
 export default http

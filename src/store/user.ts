@@ -17,7 +17,7 @@ const useUserStore = defineStore('user', {
     actions: {
         // 新增历史记录
         addHistory(newHistory: string) {
-            const isFindIndex = this.historys.findIndex(item => item === newHistory)
+            const isFindIndex = this.historys.findIndex((item) => item === newHistory)
             // 移除旧数据
             if (isFindIndex !== -1) {
                 this.historys.splice(isFindIndex, 1)
@@ -38,7 +38,7 @@ const useUserStore = defineStore('user', {
             this.token = newToken
         },
         // 注册
-        async register (query: any) {
+        async register(query: any) {
             // 加密密码
             // const { password } = query
             // return await sysApi.register({
@@ -84,7 +84,15 @@ const useUserStore = defineStore('user', {
                 avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/%E7%81%B0%E5%A4%AA%E7%8B%BC.png'
             }
             this.setUserInfo(data)
-            message('success', `欢迎您 ${data.vipLevel ? '尊贵的 VIP' + data.vipLevel + '用户 ' + data.nickname : data.nickname}`, 5000)
+            message(
+                'success',
+                `欢迎您 ${
+                    data.vipLevel
+                        ? '尊贵的 VIP' + data.vipLevel + '用户 ' + data.nickname
+                        : data.nickname
+                }`,
+                5000
+            )
         },
         // 退出登录
         logout() {
@@ -102,8 +110,8 @@ const useUserStore = defineStore('user', {
         },
         afterRestore: (context) => {
             console.log('After hydration...:' + context)
-        },
-    },
+        }
+    }
 })
 
 export default useUserStore

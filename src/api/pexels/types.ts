@@ -10,5 +10,5 @@ export interface IPexelsApi {
     getData: (query: IList) => Promise<any>
     getHint: (query: IHint) => Promise<any>
     getThemes: () => Promise<any>
-    getPexelsFromId: (query:any) => Promise<any>
+    getPexelsFromId: (query: any) => Promise<any>
 }

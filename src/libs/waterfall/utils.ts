@@ -26,7 +26,7 @@ export const getAllImg = (imgElements: HTMLImageElement[]) => {
 }
 
 interface PResolve {
-    img: string,
+    img: string
     index: number
 }
 
@@ -40,7 +40,7 @@ export const onComplateImgs = (imgs: string[]) => {
             imageObj.onload = () => {
                 resolve({
                     img,
-                    index,
+                    index
                 })
             }
         })
